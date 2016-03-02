@@ -1,2 +1,3 @@
-# collider-cli
+# Collider CLI
+
 A command-line interface to Collider.

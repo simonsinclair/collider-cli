@@ -1,0 +1,26 @@
+{
+  "name": "collider-cli",
+  "version": "0.0.1",
+  "description": "A command-line interface to Collider.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonsinclair/collider-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "collider"
+  ],
+  "author": "Simon Sinclair",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonsinclair/collider-cli/issues"
+  },
+  "homepage": "https://github.com/simonsinclair/collider-cli#readme",
+  "preferGlobal": true,
+  "bin": {
+    "collider": "index.js"
+  }
+}

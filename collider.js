@@ -10,4 +10,5 @@ updateNotifier({ pkg }).notify();
 
 cli
   .version( pkg.version )
+  .command( 'run', 'runs an existing project', { isDefault: true } )
   .parse( process.argv );

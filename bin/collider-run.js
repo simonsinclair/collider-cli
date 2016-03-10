@@ -2,7 +2,7 @@
 
 'use strict';
 
-var pkg = require('./package.json')
+var pkg = require('../package.json')
 var cli = require('commander');
 
 var fs    = require('fs');

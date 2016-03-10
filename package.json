@@ -21,7 +21,7 @@
   "homepage": "https://github.com/simonsinclair/collider-cli#readme",
   "preferGlobal": true,
   "bin": {
-    "collider": "collider.js"
+    "collider": "bin/collider.js"
   },
   "dependencies": {
     "commander": "^2.9.0",

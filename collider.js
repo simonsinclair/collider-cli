@@ -10,6 +10,6 @@ updateNotifier({ pkg }).notify();
 
 cli
   .version( pkg.version )
-  .command( 'run', 'runs an existing project', { isDefault: true } )
   .command( 'new <dir>', 'creates a new project in a directory' )
+  .command( 'run', 'runs an existing project in the current directory', { isDefault: true } )
   .parse( process.argv );

@@ -5,8 +5,10 @@
 var pkg = require('../package.json')
 var cli = require('commander');
 
-var fs   = require('fs');
-var path = require('path');
+var fs      = require('fs');
+var path    = require('path');
+var request = require('request');
+var targz   = require('tar.gz');
 
 cli
   .version( pkg.version )
@@ -28,11 +30,10 @@ var name = cli.args[0];
 
 var newProjectPath = path.join( cwd, name );
 
-var requestOpts = {
-  hostname: 'getcollider.com',
-  path:     '/latest.tar.gz',
-  method:   'GET'
-};
+// var requestOpts = {
+//   hostname: 'getcollider.com',
+//   path:     '/latest.tar.gz',
+// };
 
 var colliderFile = {
   name: name,
@@ -68,6 +69,10 @@ fs.mkdir( newProjectPath, function(error) {
     writeColliderFile( colliderFileData );
     getCollider();
 
+    // To Do
+    // get matter using `gulp matter` if the option was passed
+    // and add @import 'matter/matter'; to main.scss.
+
   }
 
 });
@@ -81,5 +86,8 @@ function writeColliderFile(data) {
 }
 
 function getCollider() {
-  // ...
+  var read  = request.get('http://getcollider.com/latest.tar.gz');
+  var write = targz({}, { strip: 1 }).createWriteStream( newProjectPath );
+
+  read.pipe( write );
 }

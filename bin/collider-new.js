@@ -30,11 +30,6 @@ var name = cli.args[0];
 
 var newProjectPath = path.join( cwd, name );
 
-// var requestOpts = {
-//   hostname: 'getcollider.com',
-//   path:     '/latest.tar.gz',
-// };
-
 var colliderFile = {
   name: name,
   createdTime: Date.now(),
@@ -69,9 +64,9 @@ fs.mkdir( newProjectPath, function(error) {
     writeColliderFile( colliderFileData );
     getCollider();
 
-    // To Do
-    // get matter using `gulp matter` if the option was passed
-    // and add @import 'matter/matter'; to main.scss.
+    // To Do:
+    // - Get Matter using `gulp matter` if option was passed
+    // - Add "@import 'matter/matter';" to "main.scss"
 
   }
 

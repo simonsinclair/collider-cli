@@ -8,7 +8,8 @@ var cli = require('commander');
 var fs      = require('fs');
 var path    = require('path');
 var request = require('request');
-var targz   = require('tar.gz');
+var tar     = require('tar-fs');
+var zlib    = require('zlib');
 
 cli
   .version( pkg.version )
@@ -81,8 +82,7 @@ function writeColliderFile(data) {
 }
 
 function getCollider() {
-  var read  = request.get('http://getcollider.com/latest.tar.gz');
-  var write = targz({}, { strip: 1 }).createWriteStream( newProjectPath );
-
-  read.pipe( write );
+  request('http://getcollider.com/latest.tar.gz')
+    .pipe( zlib.createGunzip() )
+    .pipe( tar.extract( newProjectPath ) );
 }

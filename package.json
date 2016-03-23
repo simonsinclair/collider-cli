@@ -24,6 +24,7 @@
     "collider": "bin/collider.js"
   },
   "dependencies": {
+    "chalk": "^1.1.1",
     "commander": "^2.9.0",
     "request": "^2.69.0",
     "tar-fs": "^1.11.1",

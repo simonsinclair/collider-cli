@@ -34,7 +34,7 @@ var newProjectPath = path.join( cwd, name );
 var colliderFile = {
   name: name,
   createdTime: Date.now(),
-  matter: typeof cli.matter !== 'undefined' ? cli.matter : false
+  matter: typeof cli.matter !== 'undefined' ? cli.matter : ""
 };
 
 var colliderFileData = JSON.stringify( colliderFile );

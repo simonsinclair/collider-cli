@@ -14,7 +14,7 @@ cli
   .parse( process.argv );
 
 var cwd = process.cwd();
-var colliderFile = path.join( cwd, '.collider');
+var colliderFile = path.join( cwd, 'project', '.collider');
 
 // Check if a Collider-file exists in the current working directory before running Gulp.
 fs.access( colliderFile, fs.F_OK, function(error) {

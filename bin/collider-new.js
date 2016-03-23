@@ -14,6 +14,7 @@ var zlib    = require('zlib');
 cli
   .version( pkg.version )
   .arguments( '<project-name>' )
+  .option('-a, --author <full name>', 'set a project author')
   .option('-m, --matter <url>', 'include a Matter repository from a clone URL')
   .parse( process.argv );
 
@@ -34,6 +35,7 @@ var newProjectPath = path.join( cwd, name );
 var colliderFile = {
   name: name,
   createdTime: Date.now(),
+  author: typeof cli.author !== 'undefined' ? cli.author : "",
   matter: typeof cli.matter !== 'undefined' ? cli.matter : ""
 };
 

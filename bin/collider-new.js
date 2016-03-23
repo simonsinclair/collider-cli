@@ -64,8 +64,9 @@ fs.mkdir( newProjectPath, function(error) {
 
   } else {
 
-    writeColliderFile( colliderFileData );
-    getCollider();
+    getCollider(function() {
+      writeColliderFile( colliderFileData );
+    });
 
     // To Do:
     // - Get Matter using `gulp matter` if option was passed
@@ -83,8 +84,14 @@ function writeColliderFile(data) {
   });
 }
 
-function getCollider() {
-  request('http://getcollider.com/latest.tar.gz')
+function getCollider(cb) {
+  request('http://getcollider.com/latest.tar.gz', function(err) {
+    if ( ! err ) {
+      cb();
+    } else {
+      throw err;
+    }
+  })
     .pipe( zlib.createGunzip() )
     .pipe( tar.extract( newProjectPath ) );
 }

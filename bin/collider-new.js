@@ -76,7 +76,7 @@ fs.mkdir( newProjectPath, function(error) {
 });
 
 function writeColliderFile(data) {
-  var colliderFilePath = path.join( newProjectPath, '.collider' );
+  var colliderFilePath = path.join( newProjectPath, 'project', '.collider' );
 
   fs.writeFile( colliderFilePath, data, function(error) {
     if(error) throw error;

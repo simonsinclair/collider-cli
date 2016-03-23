@@ -5,6 +5,9 @@
 var pkg = require('../package.json')
 var cli = require('commander');
 
+var createError  = require('../lib/createError');
+var logErrorExit = require('../lib/logErrorExit');
+
 var fs      = require('fs');
 var path    = require('path');
 var request = require('request');
@@ -42,25 +45,24 @@ var colliderFile = {
 var colliderFileData = JSON.stringify( colliderFile );
 
 // Create a new directory at 'newProjectPath'.
-fs.mkdir( newProjectPath, function(error) {
+fs.mkdir( newProjectPath, function(err) {
 
   // Set a default error message.
-  var errorMsg = `There was a problem creating "${name}" inside "${cwd}".`;
+  var errMsg = `There was a problem creating "${name}" inside "${cwd}".`;
 
-  if(error) {
+  if(err) {
 
     // Using the error code, make the default error message more useful.
-    switch (error.code) {
+    switch (err.code) {
       case 'EEXIST':
-        errorMsg = `A file or directory named "${name}" already exists in "${cwd}".`;
+        errMsg = `A file or directory named "${name}" already exists in "${cwd}".`;
         break;
 
       default:
     }
 
-    // Log 'errorMsg' and exit.
-    console.log(errorMsg);
-    process.exit(1);
+    var err = createError( errMsg );
+    logErrorExit( err, true );
 
   } else {
 
@@ -79,8 +81,10 @@ fs.mkdir( newProjectPath, function(error) {
 function writeColliderFile(data) {
   var colliderFilePath = path.join( newProjectPath, 'project', '.collider' );
 
-  fs.writeFile( colliderFilePath, data, function(error) {
-    if(error) throw error;
+  fs.writeFile( colliderFilePath, data, function(err) {
+    if (err) {
+      throw err;
+    }
   });
 }
 

@@ -17,9 +17,8 @@ yargs
   .help()
   .argv;
 
-var commands = cli.argv._;
+var command = yargs.argv._[0];
 
-// If no commands are given, then show help.
-if(commands.length === 0) {
-  cli.showHelp();
+if(!command) {
+  yargs.showHelp();
 }

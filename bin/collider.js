@@ -12,7 +12,7 @@ yargs
   .strict()
   .version()
   .usage('collider [--version] [--help] <command> [<args>]')
-  .command('run', 'Run an existing project in the current directory', require('../lib/commands/run'))
+  .command('run', 'Run the current project', require('../lib/commands/run'))
   .command('new <name>', 'Create a new project in the current directory', require('../lib/commands/new'))
   .command('matter', 'Manage Matter libraries in the current project', function (yargs) {
     return yargs

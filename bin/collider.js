@@ -11,7 +11,7 @@ updateNotifier({ pkg }).notify();
 yargs
   .strict()
   .version()
-  .usage('collider [--version] [--help] <command> [<args>]')
+  .usage('$0 [--version] [--help] <command> [command] [<args>]')
   .command('run', 'Run the current project', require('../lib/commands/run'))
   .command('new <name>', 'Create a new project in the current directory', require('../lib/commands/new'))
   .command('matter', 'Manage Matter libraries in the current project', function (yargs) {

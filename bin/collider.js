@@ -3,12 +3,12 @@
 'use strict';
 
 var pkg            = require('../package.json')
-var cli            = require('yargs');
+var yargs          = require('yargs');
 var updateNotifier = require('update-notifier');
 
 updateNotifier({ pkg }).notify();
 
-cli
+yargs
   .strict()
   .version()
   .usage('collider [--version] [--help] <command> [<args>]')

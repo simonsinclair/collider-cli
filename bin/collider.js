@@ -3,6 +3,7 @@
 'use strict';
 
 var pkg            = require('../package.json');
+var commands       = require('../lib/commands');
 var updateNotifier = require('update-notifier');
 
 updateNotifier({ pkg }).notify();

@@ -2,8 +2,7 @@
 
 'use strict';
 
-var pkg            = require('../package.json')
-var yargs          = require('yargs');
+var pkg            = require('../package.json');
 var updateNotifier = require('update-notifier');
 
 updateNotifier({ pkg }).notify();

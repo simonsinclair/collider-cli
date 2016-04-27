@@ -28,8 +28,8 @@ These collider commands are in the works:
 `;
 
 var args = docopt(doc, {
-  version: pkg.version,
-  options_first: true
+  version: `Collider CLI ${pkg.version}`,
+  options_first: true,
 });
 
 var cmd  = args['<command>'];

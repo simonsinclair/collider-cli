@@ -13,18 +13,17 @@ var doc = `
 usage: collider [--version] [--help] <command> [<args>...]
 
 options:
-  -h, --help  Show this message.
+  -h, --help  Show help information.
   --version   Show program version.
 
-The most commonly used collider commands are:
-  run  Run the current project
-  new  Create a new project in the current directory
+commands:
+  run       Run the current project.
+  new       Create a new project in the current directory.
+  matter    Manage Matter libraries in the current project.
+  generate  Generate skeleton Matter within the current project.
+  help      Show help information.
 
-See 'collider <command> --help' for more information on a specific command.
-
-These collider commands are in the works:
-  matter    Manage Matter libraries in the current project
-  generate  Generate skeleton Matter within the current project
+See 'collider help <command>' for more information on a specific command.
 `;
 
 var args = docopt(doc, {

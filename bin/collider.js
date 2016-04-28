@@ -2,7 +2,9 @@
 
 'use strict';
 
-var pkg   = require('../package.json');
+var createError  = require('../lib/createError');
+var logErrorExit = require('../lib/logErrorExit');
+var pkg = require('../package.json');
 
 var docopt = require('docopt').docopt;
 var updateNotifier = require('update-notifier');

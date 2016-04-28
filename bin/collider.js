@@ -51,5 +51,5 @@ switch(cmd) {
     require('../lib/commands/help')(argv);
     break;
   default:
-    console.error(`"${cmd}" is not a collider command. See 'collider --help'.`)
+    console.error(`collider: "${cmd}" is not a collider command. See 'collider --help'.`)
 }

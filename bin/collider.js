@@ -41,6 +41,15 @@ switch(cmd) {
   case 'new':
     require('../lib/commands/new')(argv);
     break;
+  case 'matter':
+    require('../lib/commands/matter')(argv);
+    break;
+  case 'generate':
+    require('../lib/commands/generate')(argv);
+    break;
+  case 'help':
+    require('../lib/commands/help')(argv);
+    break;
   default:
     console.error(`"${cmd}" is not a collider command. See 'collider --help'.`)
 }

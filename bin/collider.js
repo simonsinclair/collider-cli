@@ -36,7 +36,7 @@ var args = docopt(doc, {
 var cmd  = args['<command>'];
 var argv = [cmd].concat(args['<args>']);
 
-switch(cmd) {
+switch (cmd) {
   case 'run':
     require('../lib/commands/run')(argv);
     break;
@@ -53,5 +53,5 @@ switch(cmd) {
     require('../lib/commands/help')(argv);
     break;
   default:
-    console.error(`collider: "${cmd}" is not a collider command. See 'collider --help'.`)
+    console.error(`collider: "${cmd}" is not a collider command. See 'collider --help'.`);
 }

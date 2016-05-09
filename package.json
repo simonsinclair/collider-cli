@@ -31,5 +31,9 @@
     "rimraf": "^2.5.2",
     "tar-fs": "^1.11.1",
     "update-notifier": "^0.6.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
   }
 }

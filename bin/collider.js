@@ -47,7 +47,7 @@ switch (cmd) {
     cmdRun(argv);
     break;
   case 'new':
-    cNew(argv);
+    cmdNew(argv);
     break;
   case 'matter':
     cmdMatter(argv);

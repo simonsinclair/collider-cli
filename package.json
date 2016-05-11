@@ -26,8 +26,8 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "docopt": "^0.6.2",
+    "got": "^6.3.0",
     "lodash": "^4.11.2",
-    "request": "^2.69.0",
     "rimraf": "^2.5.2",
     "tar-fs": "^1.11.1",
     "update-notifier": "^0.6.1",

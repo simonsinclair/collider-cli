@@ -6,6 +6,12 @@ var createError  = require('../lib/createError');
 var logErrorExit = require('../lib/logErrorExit');
 var pkg = require('../package.json');
 
+var cmdRun      = require('../lib/commands/run');
+var cmdNew      = require('../lib/commands/new');
+var cmdMatter   = require('../lib/commands/matter');
+var cmdGenerate = require('../lib/commands/generate');
+var cmdHelp     = require('../lib/commands/help');
+
 var docopt = require('docopt').docopt;
 var updateNotifier = require('update-notifier');
 
@@ -38,19 +44,19 @@ var argv = [cmd].concat(args['<args>']);
 
 switch (cmd) {
   case 'run':
-    require('../lib/commands/run')(argv);
+    cmdRun(argv);
     break;
   case 'new':
-    require('../lib/commands/new')(argv);
+    cNew(argv);
     break;
   case 'matter':
-    require('../lib/commands/matter')(argv);
+    cmdMatter(argv);
     break;
   case 'generate':
-    require('../lib/commands/generate')(argv);
+    cmdGenerate(argv);
     break;
   case 'help':
-    require('../lib/commands/help')(argv);
+    cmdHelp(argv);
     break;
   default:
     console.error(`collider: "${cmd}" is not a collider command. See 'collider --help'.`);

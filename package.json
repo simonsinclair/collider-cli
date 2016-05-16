@@ -1,6 +1,6 @@
 {
   "name": "collider-cli",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A command-line interface to Collider.",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec"

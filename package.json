@@ -3,7 +3,7 @@
   "version": "0.5.3",
   "description": "A command-line interface to Collider.",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "./node_modules/.bin/mocha --slow 350 --reporter spec"
   },
   "repository": {
     "type": "git",

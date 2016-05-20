@@ -40,8 +40,8 @@ var TempDir = {
     return fs.accessSync(path.join(this.tmpLocation, path), fs.F_OK);
   },
 
-  collider: function () {
-    var args = Array.prototype.slice.call(arguments);
+  collider: function (args) {
+    args = args || [];
     return spawnSync('collider', args, { cwd: this.tmpLocation });
   },
 };

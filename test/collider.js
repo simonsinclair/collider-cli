@@ -4,49 +4,13 @@
 'use strict';
 
 var pkg = require('../package.json');
+var TempDir = require('./lib/TempDir');
 
-var fs = require('fs');
 var os = require('os');
 var path = require('path');
-var spawnSync = require('child_process').spawnSync;
 
 var expect = require('chai').expect;
-var mkdirp = require('mkdirp');
-var rimraf = require('rimraf');
 var uuid = require('node-uuid');
-
-var TempDir = {
-  tmpLocation: null,
-
-  prepare: function () {
-    mkdirp.sync(this.tmpLocation);
-  },
-
-  clean: function () {
-    rimraf.sync(this.tmpLocation);
-  },
-
-  getPath: function (path) {
-    return path.join(this.tmpLocation, path);
-  },
-
-  read: function (path) {
-    return fs.readFileSync(this.getPath(path), 'utf8');
-  },
-
-  readJson: function (path) {
-    return JSON.parse(this.read(path));
-  },
-
-  exists: function (path) {
-    return fs.accessSync(path.join(this.tmpLocation, path), fs.F_OK);
-  },
-
-  collider: function (args) {
-    args = args || [];
-    return spawnSync('collider', args, { cwd: this.tmpLocation });
-  },
-};
 
 // Set a unique temporary location.
 TempDir.tmpLocation = path.join(os.tmpdir(), 'collider-cli-tests', uuid.v4());

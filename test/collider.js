@@ -68,5 +68,6 @@ describe('collider', function () {
 });
 
 after('clean', function () {
+  this.timeout(0);
   TempDir.clean();
 });

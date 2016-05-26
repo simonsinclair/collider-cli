@@ -1,14 +1,14 @@
 // test/lib/TempDir.js
 //
 
+'use strict';
+
 var fs = require('fs');
 var path = require('path');
 var spawnSync = require('child_process').spawnSync;
 
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
-
-'use strict';
 
 var TempDir = {
   tmpLocation: null,
@@ -21,23 +21,23 @@ var TempDir = {
     rimraf.sync(this.tmpLocation);
   },
 
-  getPath: function (path) {
-    return path.join(this.tmpLocation, path);
+  getPath: function (name) {
+    return path.join(this.tmpLocation, name);
   },
 
-  read: function (path) {
-    return fs.readFileSync(this.getPath(path), 'utf8');
+  read: function (name) {
+    return fs.readFileSync(this.getPath(name), 'utf8');
   },
 
-  readJson: function (path) {
-    return JSON.parse(this.read(path));
+  readJson: function (name) {
+    return JSON.parse(this.read(name));
   },
 
-  exists: function (path) {
-    return fs.accessSync(path.join(this.tmpLocation, path), fs.F_OK);
+  exists: function (name) {
+    return fs.accessSync(path.join(this.tmpLocation, name), fs.F_OK);
   },
 
-  collider: function (args, shouldInheritStdio) {
+  collider: function (args) {
     args = args || [];
     return spawnSync('collider', args, { cwd: this.tmpLocation });
   },

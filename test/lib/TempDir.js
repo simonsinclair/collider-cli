@@ -3,6 +3,8 @@
 
 'use strict';
 
+var cmds = require('../../lib/commands');
+
 var fs = require('fs');
 var path = require('path');
 var spawnSync = require('child_process').spawnSync;
@@ -35,6 +37,11 @@ var TempDir = {
 
   exists: function (name) {
     return fs.accessSync(path.join(this.tmpLocation, name), fs.F_OK);
+  },
+
+  runCmd: function (cmd, argv) {
+    argv = [cmd].concat(argv);
+    return cmds[cmd](argv, this.tmpLocation);
   },
 
   collider: function (args) {

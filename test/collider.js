@@ -10,7 +10,10 @@ var os = require('os');
 var path = require('path');
 
 var expect = require('chai').expect;
+var nock = require('nock');
 var uuid = require('node-uuid');
+
+nock.disableNetConnect();
 
 // Set a unique temporary location.
 tempDir.tmpLocation = path.join(os.tmpdir(), 'collider-cli-tests', uuid.v4());
@@ -59,12 +62,47 @@ describe('collider', function () {
     expect(text).to.contain('Error:');
   });
 
-  describe('run', function () {
+  // `new` command
+  //
 
-    // it('should run an existing project', function () {
+  describe('new', function () {
 
-    // });
+    it('should create a new project', function () {
+
+      // Intercept following HTTP request with a mocked
+      // response and expected successful file payload.
+      nock('http://getcollider.com')
+        .get('/latest.tar.gz')
+        .replyWithFile(200, 'assets/latest.tar.gz');
+
+      tempDir.runCmd('new', ['test-project'], function () {
+        var project = tempDir.readJson('test-project/project/.collider');
+
+        expect(project.name).to.equal('test-project');
+        expect(project.author).to.equal('unknown');
+      });
+    });
+
+    it('should create a new project with an attributed author', function () {
+
+      // Intercept following HTTP request with a mocked
+      // response and expected successful file payload.
+      nock('http://getcollider.com')
+        .get('/latest.tar.gz')
+        .replyWithFile(200, 'assets/latest.tar.gz');
+
+      tempDir.runCmd('new', ['--author', 'Test Author', 'test-project-author'], function () {
+        var project = tempDir.readJson('test-project-author/project/.collider');
+
+        expect(project.name).to.equal('test-project-author');
+        expect(project.author).to.equal('Test Author');
+      });
+    });
   });
+});
+
+afterEach(function () {
+  nock.cleanAll();
 });
 
 after('clean', function () {

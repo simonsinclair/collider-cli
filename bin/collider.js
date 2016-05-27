@@ -21,8 +21,8 @@ options:
   --version   Show program version.
 
 commands:
-  run       Run the current project.
   new       Create a new project in the current directory.
+  run       Run the current project.
   matter    Manage Matter libraries in the current project.
   generate  Generate skeleton Matter within the current project.
   help      Show help information.

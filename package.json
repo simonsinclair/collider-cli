@@ -28,7 +28,6 @@
     "docopt": "^0.6.2",
     "lodash": "^4.11.2",
     "mkdirp": "^0.5.1",
-    "nock": "^8.0.0",
     "progress": "^1.1.8",
     "request": "^2.72.0",
     "rimraf": "^2.5.2",
@@ -39,6 +38,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
+    "nock": "^8.0.0",
     "node-uuid": "^1.4.7"
   }
 }

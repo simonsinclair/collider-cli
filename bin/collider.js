@@ -39,7 +39,7 @@ var cmd  = args['<command>'];
 var argv = [cmd].concat(args['<args>']);
 
 if (typeof cmds[cmd] !== 'undefined') {
-  cmds[cmd](argv);
+  cmds[cmd](argv, process.cwd());
 } else {
   var err = createError(`"${cmd}" is not a collider command. See 'collider help'.`);
   logErrorExit(err, true);

@@ -36,7 +36,7 @@ var TempDir = {
   },
 
   exists: function (name) {
-    return fs.accessSync(path.join(this.tmpLocation, name), fs.F_OK);
+    return fs.accessSync(path.join(this.tmpLocation, name), fs.F_OK) ? false : true;
   },
 
   runCmd: function (cmd, argv) {

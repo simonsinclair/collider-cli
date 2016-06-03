@@ -39,9 +39,9 @@ var TempDir = {
     return fs.accessSync(path.join(this.tmpLocation, name), fs.F_OK) ? false : true;
   },
 
-  runCmd: function (cmd, argv) {
+  runCmd: function (cmd, argv, cb) {
     argv = [cmd].concat(argv);
-    return cmds[cmd](argv, this.tmpLocation);
+    return cmds[cmd](argv, this.tmpLocation, cb);
   },
 
   collider: function (args) {

@@ -13,6 +13,7 @@ var expect = require('chai').expect;
 var nock = require('nock');
 var uuid = require('node-uuid');
 
+// Throw "NetConnectNotAllowedError" on any requests to 'un-Nocked' hosts.
 nock.disableNetConnect();
 
 // Set a unique temporary location.
@@ -30,7 +31,7 @@ describe('collider', function () {
   it('should show a usage format when passed no args.', function () {
     var result = tempDir.collider();
 
-    // TO DO:
+    // To do:
     // Look into why exit code (1) is being
     // routed to STDOUT rather than STDERR.
     var text = result.stdout.toString();
@@ -69,35 +70,46 @@ describe('collider', function () {
 
     it('should create a new project', function () {
 
-      // Intercept following HTTP request with a mocked
-      // response and expected successful file payload.
-      nock('http://getcollider.com')
-        .get('/latest.tar.gz')
-        .replyWithFile(200, 'assets/latest.tar.gz');
-
-      tempDir.runCmd('new', ['test-project'], function () {
-        var project = tempDir.readJson('test-project/project/.collider');
-
-        expect(project.name).to.equal('test-project');
-        expect(project.author).to.equal('unknown');
-      });
     });
 
-    it('should create a new project with an attributed author', function () {
+    // Collider-file reference.
+    // {"name":"","createdTime":0,"author":"","matterLibs":[]}
 
-      // Intercept following HTTP request with a mocked
-      // response and expected successful file payload.
-      nock('http://getcollider.com')
-        .get('/latest.tar.gz')
-        .replyWithFile(200, 'assets/latest.tar.gz');
+    it('should populate the Collider-file', function () {
 
-      tempDir.runCmd('new', ['--author', 'Test Author', 'test-project-author'], function () {
-        var project = tempDir.readJson('test-project-author/project/.collider');
-
-        expect(project.name).to.equal('test-project-author');
-        expect(project.author).to.equal('Test Author');
-      });
     });
+
+    it('should populate the Collider-file with the attributed author', function () {
+
+    });
+  });
+
+  // `run` command
+  //
+
+  describe('run', function () {
+
+  });
+
+  // `matter` command
+  //
+
+  describe('matter', function () {
+
+  });
+
+  // `generate` command
+  //
+
+  describe('generate', function () {
+
+  });
+
+  // `help` command
+  //
+
+  describe('help', function () {
+
   });
 });
 

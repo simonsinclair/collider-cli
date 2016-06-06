@@ -10,7 +10,6 @@ var os = require('os');
 var path = require('path');
 
 var expect = require('chai').expect;
-var nock = require('nock');
 var uuid = require('node-uuid');
 
 // Throw "NetConnectNotAllowedError" on any requests to 'un-Nocked' hosts.

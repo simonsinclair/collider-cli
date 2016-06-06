@@ -13,18 +13,18 @@ var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 
 var TempDir = {
-  tmpLocation: null,
+  location: null,
 
   prepare: function () {
-    mkdirp.sync(this.tmpLocation);
+    mkdirp.sync(this.location);
   },
 
   clean: function () {
-    rimraf.sync(this.tmpLocation);
+    rimraf.sync(this.location);
   },
 
   getPath: function (name) {
-    return path.join(this.tmpLocation, name);
+    return path.join(this.location, name);
   },
 
   read: function (name) {
@@ -36,17 +36,17 @@ var TempDir = {
   },
 
   exists: function (name) {
-    return fs.accessSync(path.join(this.tmpLocation, name), fs.F_OK) ? false : true;
+    return fs.accessSync(path.join(this.location, name), fs.F_OK) ? false : true;
   },
 
-  runCmd: function (cmd, argv, cb) {
+  runCmd: function (cmd, argv, dir, cb) {
     argv = [cmd].concat(argv);
-    return cmds[cmd](argv, this.tmpLocation, cb);
+    return cmds[cmd](argv, this.location, cb);
   },
 
   collider: function (args) {
     args = args || [];
-    return spawnSync('collider', args, { cwd: this.tmpLocation });
+    return spawnSync('collider', args, { cwd: this.location });
   },
 };
 

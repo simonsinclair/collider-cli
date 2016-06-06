@@ -16,7 +16,7 @@ var uuid = require('node-uuid');
 nock.disableNetConnect();
 
 // Set a unique temporary location.
-tempDir.tmpLocation = path.join(os.tmpdir(), 'collider-cli-tests', uuid.v4());
+tempDir.location = path.join(os.tmpdir(), 'collider-cli-tests', uuid.v4());
 
 // TESTS
 //

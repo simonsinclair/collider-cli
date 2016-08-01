@@ -29,6 +29,7 @@
     "inquirer": "^1.1.2",
     "jsonfile": "^2.3.1",
     "lodash": "^4.14.0",
+    "micromatch": "^2.3.11",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "progress": "^1.1.8",

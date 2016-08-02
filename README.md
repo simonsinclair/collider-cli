@@ -3,18 +3,14 @@
 A command-line interface to Collider.
 
 ```
-usage: collider [--version] [--help] <command> [<args>...]
+usage:
+  collider new       Create a new project.
+  collider open      Open the current project.
+  collider edit      Edit the current project.
+  collider generate  Generate skeleton files.
+  collider update    Update project dependencies.
 
 options:
-  -h, --help  Show help information.
-  --version   Show program version.
-
-commands:
-  new       Create a new project in the current directory.
-  run       Run the current project.
-  matter    Manage Matter libraries in the current project.
-  generate  Generate skeleton Matter within the current project.
-  help      Show help information.
-
-See 'collider help <command>' for more information on a specific command.
+  -h, --help         Show this message.
+  -v, --version      Show program version.
 ```

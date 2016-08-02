@@ -7,7 +7,6 @@ var cmds = require('../../lib/commands');
 
 var fs = require('fs');
 var path = require('path');
-var spawnSync = require('child_process').spawnSync;
 
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
@@ -39,15 +38,6 @@ var TempDir = {
     return fs.accessSync(path.join(this.location, name), fs.F_OK) ? false : true;
   },
 
-  runCmd: function (cmd, argv, dir, cb) {
-    argv = [cmd].concat(argv);
-    return cmds[cmd](argv, this.location, cb);
-  },
-
-  collider: function (args) {
-    args = args || [];
-    return spawnSync('collider', args, { cwd: this.location });
-  },
 };
 
 module.exports = TempDir;

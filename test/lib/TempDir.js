@@ -5,39 +5,49 @@
 
 var cmds = require('../../lib/commands');
 
-var fs = require('fs');
+var fs   = require('fs');
+var os   = require('os');
 var path = require('path');
 
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
+var uuid   = require('uuid');
 
-var TempDir = {
-  location: null,
+var tmpLocation = path.join(
+  os.tmpdir(),
+  'collider-tests',
+  uuid.v4().slice(0, 8)
+);
 
-  prepare: function () {
-    mkdirp.sync(this.location);
-  },
+after(function () {
+  rimraf.sync(tmpLocation);
+});
 
-  clean: function () {
-    rimraf.sync(this.location);
-  },
+function TempDir() {
+  this.path = path.join(tmpLocation, uuid.v4());
+}
 
-  getPath: function (name) {
-    return path.join(this.location, name);
-  },
+TempDir.prototype.prepare = function (files) {
+  rimraf.sync(this.path);
+  mkdirp.sync(this.path);
 
-  read: function (name) {
-    return fs.readFileSync(this.getPath(name), 'utf8');
-  },
+  return this;
+};
 
-  readJson: function (name) {
-    return JSON.parse(this.read(name));
-  },
+TempDir.prototype.getPath = function (name) {
+  return path.join(this.path, name);
+};
 
-  exists: function (name) {
-    return fs.accessSync(path.join(this.location, name), fs.F_OK) ? false : true;
-  },
+TempDir.prototype.read = function (name) {
+  return fs.readFileSync(this.getPath(name), 'utf8');
+};
 
+TempDir.prototype.readJson = function (name) {
+  return JSON.parse(this.read(name));
+};
+
+TempDir.prototype.exists = function (name) {
+  return fs.accessSync(path.join(this.path, name), fs.F_OK);
 };
 
 module.exports = TempDir;

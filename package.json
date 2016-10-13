@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "collider-cli",
   "version": "1.0.7",
   "description": "A command-line interface to Collider.",
